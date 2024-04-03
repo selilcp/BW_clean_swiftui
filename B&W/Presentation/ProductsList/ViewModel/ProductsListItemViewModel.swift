@@ -1,13 +1,11 @@
 import Foundation
 
-struct ProductsListItemViewModel: Equatable {
+class ProductsListItemViewModel{
     let name: String
     let price: String
     let description: String
     let imagePath: String
-}
-
-extension ProductsListItemViewModel {
+    
     init(product: Product) {
         self.name = product.name ?? ""
         self.price = product.price ?? ""

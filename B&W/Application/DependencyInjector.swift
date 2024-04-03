@@ -32,10 +32,10 @@ final class DependencyContainer {
     }
 
     func makeProductDetailsViewController(product: Product,
-                                          image: Data?) -> ProductDetailsViewController {
+                                          image: Data?) -> ProductDetailsView {
 
-        return ProductDetailsViewController.create(with: makeProductDetailsViewModel(product: product,
-                                                                                     image: image))
+        return ProductDetailsView.create(with: makeProductDetailsViewModel(product: product,
+                                                                           image: image))
     }
 
     // MARK: - View Models
@@ -53,7 +53,8 @@ final class DependencyContainer {
 
     // MARK: - Flow Coordinators
     func makeGetProductsFlowCoordinator(tabBarController: UITabBarController, navigationController: UINavigationController) -> GetProductsFlowCoordinator {
-        return GetProductsFlowCoordinator(tabBarController: tabBarController, navigationController: navigationController,
+        return GetProductsFlowCoordinator(tabBarController: tabBarController, 
+                                          navigationController: navigationController,
                                           dependencies: self)
     }
 }

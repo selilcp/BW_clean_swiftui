@@ -31,9 +31,11 @@ final class DependencyContainer {
         return ProductsListViewController.create(with: makeProductsListViewModel(actions: actions))
     }
 
-    func makeProductDetailsViewController(product: Product) -> ProductDetailsViewController {
+    func makeProductDetailsViewController(product: Product,
+                                          image: Data?) -> ProductDetailsViewController {
 
-        return ProductDetailsViewController.create(with: makeProductDetailsViewModel(product: product))
+        return ProductDetailsViewController.create(with: makeProductDetailsViewModel(product: product,
+                                                                                     image: image))
     }
 
     // MARK: - View Models
@@ -43,8 +45,10 @@ final class DependencyContainer {
                                           actions: actions)
     }
 
-    func makeProductDetailsViewModel(product: Product) -> ProductDetailsViewModel {
-        return DefaultProductDetailsViewModel(product: product)
+    func makeProductDetailsViewModel(product: Product,
+                                     image:Data?) -> ProductDetailsViewModel {
+        return DefaultProductDetailsViewModel(product: product,
+                                              image: image)
     }
 
     // MARK: - Flow Coordinators

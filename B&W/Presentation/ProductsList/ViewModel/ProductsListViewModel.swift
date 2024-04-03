@@ -1,7 +1,7 @@
 import Foundation
 
 struct ProductsListViewModelActions {
-    let showProductDetails: (Product) -> Void
+    let showProductDetails: (Product, Data?) -> Void
 
 }
 
@@ -75,6 +75,7 @@ extension DefaultProductsListViewModel {
     }
 
     func didSelectItem(at index: Int) {
-        actions?.showProductDetails(products[index])
+        actions?.showProductDetails(products[index], 
+                                    items.value[index].image.value)
     }
 }

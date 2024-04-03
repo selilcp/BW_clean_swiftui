@@ -17,23 +17,14 @@ class ProductDetailsViewController: UIViewController, StoryboardInstantiable {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        bind(to: viewModel)
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        viewModel.updateImage()
-    }
-
-    private func bind(to viewModel: ProductDetailsViewModel) {
-        viewModel.image.observe(on: self) { [weak self] in
-            self?.productImageView.image = $0.flatMap(UIImage.init) }
     }
 
     private func setupViews() {
         title = viewModel.name
         productPriceLabel.text = viewModel.price
         productDescriptionTextView.text = viewModel.description
-
+        if let image = viewModel.image{
+            productImageView.image = UIImage(data: image)
+        }
     }
 }

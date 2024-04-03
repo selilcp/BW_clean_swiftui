@@ -2,7 +2,8 @@ import UIKit
 
 protocol GetProductsFlowCoordinatorDependencies {
     func makeProductsListViewController(actions: ProductsListViewModelActions) -> ProductsListViewController
-    func makeProductDetailsViewController(product: Product) -> ProductDetailsViewController
+    func makeProductDetailsViewController(product: Product,
+                                          image:Data?) -> ProductDetailsViewController
 }
 
 final class GetProductsFlowCoordinator {
@@ -31,8 +32,10 @@ final class GetProductsFlowCoordinator {
         productsListVC = shopVC
     }
 
-    private func showProductDetails(product: Product) {
-        let vc = dependencies.makeProductDetailsViewController(product: product)
+    private func showProductDetails(product: Product,
+                                    image: Data?) {
+        let vc = dependencies.makeProductDetailsViewController(product: product,
+                                                               image: image)
         productsListVC?.navigationController?.pushViewController(vc, animated: true)
     }
 }

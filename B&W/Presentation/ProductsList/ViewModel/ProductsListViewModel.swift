@@ -56,7 +56,7 @@ final class DefaultProductsListViewModel: ProductsListViewModel {
                 switch result {
                 case .success(let data):
                     self.products = data.products
-                    self.items.value = data.products.map(ProductsListItemViewModel.init)
+                    self.items.value = data.products.map(DefaultProductsListItemViewModel.init)
                 case .failure(let error):
                     self.error.value = error.isInternetConnectionError ?
                         NSLocalizedString("No internet connection", comment: "") :

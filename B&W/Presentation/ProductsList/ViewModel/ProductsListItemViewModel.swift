@@ -1,6 +1,19 @@
 import Foundation
 
-class ProductsListItemViewModel{
+protocol ProductsListItemViewModelInput{
+    func fetchImage()
+}
+
+protocol ProductsListItemViewModelOutput {
+    var name: String { get }
+    var description: String { get }
+    var price: String { get }
+    var image: Observable<Data?> { get }
+}
+
+protocol ProductsListItemViewModel: ProductsListItemViewModelInput, ProductsListItemViewModelOutput {}
+
+final class DefaultProductsListItemViewModel: ProductsListItemViewModel {
     let name: String
     let price: String
     let description: String
@@ -12,5 +25,10 @@ class ProductsListItemViewModel{
         self.price = product.price ?? ""
         self.description = product.description ?? ""
         self.imagePath = product.imagePath ?? ""
+    }
+}
+
+extension DefaultProductsListItemViewModel{
+    func fetchImage(){
     }
 }

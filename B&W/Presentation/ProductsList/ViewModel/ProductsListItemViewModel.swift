@@ -4,7 +4,8 @@ class ProductsListItemViewModel{
     let name: String
     let price: String
     let description: String
-    let imagePath: String
+    private let imagePath: String
+    var image: Observable<Data?> = Observable(nil)
     
     init(product: Product) {
         self.name = product.name ?? ""

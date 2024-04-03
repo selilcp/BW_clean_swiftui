@@ -18,18 +18,5 @@ final class ProductListItemCell: UITableViewCell {
         nameLabel.text = viewModel.name
         priceLabel.text = viewModel.price.description
         descriptionLabel.text = viewModel.description
-        updateImage()
-    }
-
-    private func updateImage() {
-        productImageView.image = nil
-
-        let url = URL(string: viewModel.imagePath)!
-
-        // Fetch Image Data
-        if let data = try? Data(contentsOf: url) {
-            // Create Image and Update Image View
-            self.productImageView.image = UIImage(data: data)
-        }
     }
 }

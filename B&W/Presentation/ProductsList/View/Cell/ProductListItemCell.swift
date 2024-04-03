@@ -18,5 +18,12 @@ final class ProductListItemCell: UITableViewCell {
         nameLabel.text = viewModel.name
         priceLabel.text = viewModel.price.description
         descriptionLabel.text = viewModel.description
+        bind(to: viewModel)
+        viewModel.fetchImage()
+    }
+    
+    private func bind(to viewModel: ProductsListItemViewModel) {
+        viewModel.image.observe(on: self) { [weak self] in
+            self?.productImageView.image = $0.flatMap(UIImage.init) }
     }
 }

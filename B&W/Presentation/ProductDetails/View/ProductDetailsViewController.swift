@@ -9,6 +9,8 @@ struct ProductDetailsView: View{
         return view
     }
     
+    //MARK: - Prduct details screen design
+    
     var body: some View {
         if #available(iOS 14.0, *) {
             VStack(alignment: .leading,spacing: 6) {

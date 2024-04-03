@@ -35,11 +35,13 @@ final class GetProductsFlowCoordinator {
 
     private func showProductDetails(product: Product,
                                     image: Data?) {
-        let detailsView = dependencies.makeProductDetailsViewController(product: product,
+        let detailsView = dependencies.makeProductDetailsViewController(product: product, // create swiftui view intead of view controller
                                                                         image: image)
         let controller = createHostController(view: detailsView)
         productsListVC?.navigationController?.pushViewController(controller, animated: true)
     }
+    
+    //MARK: - SwiftUI view wrapped inside UI hosting contoller
     
     private func createHostController(view: some View) -> UIViewController{
         return UIHostingController(rootView: view)

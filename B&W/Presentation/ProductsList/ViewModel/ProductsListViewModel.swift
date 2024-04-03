@@ -76,6 +76,6 @@ extension DefaultProductsListViewModel {
 
     func didSelectItem(at index: Int) {
         actions?.showProductDetails(products[index], 
-                                    items.value[index].image.value)
+                                    items.value[index].image.value) // when taping on cell pass image value to product detail view along with product
     }
 }

@@ -19,8 +19,10 @@ final class ProductListItemCell: UITableViewCell {
         priceLabel.text = viewModel.price.description
         descriptionLabel.text = viewModel.description
         bind(to: viewModel)
-        viewModel.fetchImage()
+        viewModel.fetchImage() // fetch and update product image on view model
     }
+    
+//MARK: - Bind image data into product image view
     
     private func bind(to viewModel: ProductsListItemViewModel) {
         viewModel.image.observe(on: self) { [weak self] in

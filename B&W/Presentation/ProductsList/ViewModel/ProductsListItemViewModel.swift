@@ -30,5 +30,11 @@ final class DefaultProductsListItemViewModel: ProductsListItemViewModel {
 
 extension DefaultProductsListItemViewModel{
     func fetchImage(){
+        guard let url = URL(string: imagePath) else{ return}
+        // Fetch Image Data
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            let data = try? Data(contentsOf: url)
+            self?.image.value = data
+        }
     }
 }
